@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Assets/style.css" />
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid justify-content-center p-2">
+          <a class="navbar-brand" href="#">
+            <img src="./Assets/Images/pngkit_thunderstorm-png_1586370.png" alt="sun with storm cloud" width="30" height="24" class="d-inline-block align-text-top">
+            Weather Dashboard
+          </a>
+        </div>
+      </nav>
+    <main class="d-flex">
+        <div class="container mt-4">
+            <div class="row">
+                <div id="search" class="col-md-3">
+                    <div id="search-bar" class="container-fluid">
+                        <form role="search">
+                          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                      </div>
+                    <div id="recent-search" class="container-fluid mt-3">Recent Searches:</div>
+                </div>
+                <div id="forecast" class="col-md-9">
+                    <div id="city-forecast" class="mb-5">City Forecast</div>
+                    <div id="five-day-forecast" class="bg-warning text-dark text-center p-2">Five-Day Forecast</div>
+                        <div class="row">
+                            <div id="today" class="col-md-4">Today</div>
+                            <div id="tomorrow" class="col-md-2">Tomorrow</div>
+                            <div id="next-day" class="col-md-2">Next Day</div>
+                            <div id="fourth-day" class="col-md-2">Day Four</div>
+                            <div id="fifth-day" class="col-md-2">Day Five</div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
