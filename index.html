@@ -22,27 +22,34 @@
         <div class="container mt-4">
             <div class="row">
                 <div id="search" class="col-md-3">
-                    <div id="search-bar" class="container-fluid">
+                    <div class="container-fluid">
                         <form role="search">
-                          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                          <button class="btn btn-outline-success" type="submit">Search</button>
+                          <input class="form-control me-2" type="search" placeholder="ex: Atlanta" aria-label="Search">
+                          <button id="search-bar" class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                       </div>
-                    <div id="recent-search" class="container-fluid mt-3">Recent Searches:</div>
+                    <div id="recent-search" class="container-fluid mt-3">
+                        <h2>Recent Searches:</h2>
+                    </div>
                 </div>
-                <div id="forecast" class="col-md-9">
-                    <div id="city-forecast" class="mb-5">City Forecast</div>
-                    <div id="five-day-forecast" class="bg-warning text-dark text-center p-2">Five-Day Forecast</div>
-                        <div class="row">
-                            <div id="today" class="col-md-4">Today</div>
-                            <div id="tomorrow" class="col-md-2">Tomorrow</div>
-                            <div id="next-day" class="col-md-2">Next Day</div>
-                            <div id="fourth-day" class="col-md-2">Day Four</div>
-                            <div id="fifth-day" class="col-md-2">Day Five</div>
+                <div class="col-md-9">
+                    <div id="city-forecast" class="mb-4 py-3">
+                        <h2>City Forecast</h2>
+                    </div>
+                    <div id="five-day-forecast" class="bg-warning text-dark text-center p-2">
+                        <h2>Five-Day Forecast</h2>
+                    </div>
+                        <div class="row five-day-forecast gap-2">
+                            <div id="today" class="forecast col-md-2 py-3">Today</div>
+                            <div id="tomorrow" class="forecast col-md-2 py-3">Tomorrow</div>
+                            <div id="next-day" class="forecast col-md-2 py-3">Next Day</div>
+                            <div id="fourth-day" class="forecast col-md-2 py-3">Day Four</div>
+                            <div id="fifth-day" class="forecast col-md-2 py-3">Day Five</div>
                         </div>
                 </div>
             </div>
         </div>
     </main>
+    <script src="./Assets/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,88 @@
+:root {
+    --primary: black;
+    --secondary:  #ffc107;
+    --neutral: #ced4da;
+}
+
+body {
+
+}
+
+.btn {
+    color: white;
+    background-color: var(--primary);
+    border-color: var(--neutral);
+    margin-top: 5%;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: var(--neutral);
+    color: var(--primary);
+    border-color: var(--secondary);
+}
+
+h2 {
+    font-size: 24px;
+}
+
+#city-forecast {
+    border: solid 3px var(--neutral);
+    border-radius: 10px;
+    height: 200px;
+    text-align: center;
+}
+
+#five-day-forecast {
+    border: solid 3px var(--secondary);
+    border-radius: 10px;
+}
+
+.five-day-forecast {
+    justify-content: space-evenly;
+}
+
+#today {
+    text-align: center;
+    margin-right: 5px;
+    background-color: var(--neutral);
+    border-radius: 10px;
+    height: 250px;
+    font-weight: bold;
+}
+
+#tomorrow {
+    text-align: center;
+    margin-right: 5px;
+    background-color: var(--neutral);
+    border-radius: 10px;
+    height: 250px;
+    font-weight: bold;
+}
+
+#next-day {
+    text-align: center;
+    margin-right: 5px;
+    background-color: var(--neutral);
+    border-radius: 10px;
+    height: 250px;
+    font-weight: bold;
+}
+
+#fourth-day {
+    text-align: center;
+    margin-right: 5px;
+    background-color: var(--neutral);
+    border-radius: 10px;
+    height: 250px;
+    font-weight: bold;
+}
+
+#fifth-day {
+    text-align: center;
+    margin-right: 5px;
+    background-color: var(--neutral);
+    border-radius: 10px;
+    height: 250px;
+    font-weight: bold;
+}
