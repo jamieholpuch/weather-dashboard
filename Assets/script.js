@@ -2,9 +2,17 @@ var searchButtonEl = document.getElementById('search-bar')
 var recentSearchEl = document.getElementById('recent-search')
 var forecastCity = document.getElementById('city-forecast')
 var fiveDay = document.getElementById('five-day-forecast')
+//grab current day and add 1 day to get five day forecast
+var a = dayjs()
+var tomorrow = a.add(1, 'day').format('MMM D, YYYY')
+var thirdDay = a.add(2, 'day').format('MMM D, YYYY')
+var fourthDay = a.add(3, 'day').format('MMM D, YYYY')
+var fifthDay = a.add(4, 'day').format('MMM D, YYYY')
+
 
 
 function getGeocode(userInput) {
+    //convert the city name to lat and lon using geocode fetch
     fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=e67be6c9df6cf0b637426949787497f8`)
     .then(function (response) {
         if (response.status === 200) {
@@ -24,7 +32,8 @@ function getGeocode(userInput) {
 
 
 function getWeatherApi(userInput) {
-    //var requestUrl = url + '&q=' + userInput
+    //var requestUrl = url + '&q=' + userInput + API key
+    //fetch the weather using the city the user searches for
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userInput}&units=imperial&appid=e67be6c9df6cf0b637426949787497f8`)
         .then(function (response) {
             if (response.status === 200) {
@@ -51,6 +60,7 @@ function getWeatherApi(userInput) {
 }
 
 function getForecast(lat, lon) {
+    //fetch the five day forecast using geoCode lat and lon
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=e67be6c9df6cf0b637426949787497f8`)
         .then(function (response) {
             if (response.status === 200) {
@@ -62,19 +72,39 @@ function getForecast(lat, lon) {
         })
         .then(function (data) {
             console.log(data)
+            //set dates
             var todayForecastDate = document.getElementById('today-date');
-            var todayTempEl = document.getElementById('today-temp');
-            var todayWindEl = document.getElementById('today-wind');
-            var todayHumidityEl = document.getElementById('today-humidity');
             var today = dayjs().format('MMM D, YYYY')
             todayForecastDate.textContent = today
-            todayTempEl.textContent = "Temperature: " + data.list[0].main.temp + " *F";
-            todayWindEl.textContent = "Wind: " + data.list[0].wind.speed + " MPH";
-            todayHumidityEl.textContent = "Humidity: " + data.list[0].main.humidity + " %";
+            document.getElementById('tomorrow-date').textContent = tomorrow;
+            document.getElementById('third-date').textContent = thirdDay;
+            document.getElementById('fourth-date').textContent = fourthDay;
+            document.getElementById('fifth-date').textContent = fifthDay;
+            //set today's weather 
+            document.getElementById('today-temp').textContent = "Temperature: " + data.list[0].main.temp + " *F";
+            document.getElementById('today-wind').textContent = "Wind: " + data.list[0].wind.speed + " MPH";
+            document.getElementById('today-humidity').textContent = "Humidity: " + data.list[0].main.humidity + " %";
+            //set tomorrow's weather
+            document.getElementById('tomorrow-temp').textContent = "Temperature: " + data.list[8].main.temp + " *F";
+            document.getElementById('tomorrow-wind').textContent = "Wind: " + data.list[8].wind.speed + " MPH";
+            document.getElementById('tomorrow-humidity').textContent = "Humidity: " + data.list[8].main.humidity + " %";
+            //set third day's weather 
+            document.getElementById('third-temp').textContent = "Temperature: " + data.list[16].main.temp + " *F";
+            document.getElementById('third-wind').textContent = "Wind: " + data.list[16].wind.speed + " MPH";
+            document.getElementById('third-humidity').textContent = "Humidity: " + data.list[16].main.humidity + " %";
+            //set fourth day's weather
+            document.getElementById('fourth-temp').textContent = "Temperature: " + data.list[24].main.temp + " *F";
+            document.getElementById('fourth-wind').textContent = "Wind: " + data.list[24].wind.speed + " MPH";
+            document.getElementById('fourth-humidity').textContent = "Humidity: " + data.list[24].main.humidity + " %";
+            //set fifth day's weather
+            document.getElementById('fifth-temp').textContent = "Temperature: " + data.list[32].main.temp + " *F";
+            document.getElementById('fifth-wind').textContent = "Wind: " + data.list[32].wind.speed + " MPH";
+            document.getElementById('fifth-humidity').textContent = "Humidity: " + data.list[32].main.humidity + " %";
         })
 }  
 
 function watchForm() {
+    //when user clicks search, prevent default and run each function
     searchButtonEl.addEventListener("click", function(event) {
         event.preventDefault()
         var userInput = document.getElementById('user-input').value;
@@ -86,6 +116,8 @@ function watchForm() {
 }
 
 watchForm();
+
+
 
 
 
