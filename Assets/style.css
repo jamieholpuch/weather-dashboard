@@ -4,10 +4,6 @@
     --neutral: #ced4da;
 }
 
-body {
-
-}
-
 .btn {
     color: white;
     background-color: var(--primary);
@@ -26,10 +22,41 @@ h2 {
     font-size: 24px;
 }
 
+h3 {
+    font-size: 24px;
+    color: var(--secondary);
+    text-align: left;
+    padding: 10px;
+}
+
+h4 {
+    font-size: 16px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.forecast {
+    width: 160px;
+}
+
+.date {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+}
+
+#city-date {
+    font-size: 20px;
+    color: var(--primary);
+    font-style: italic;
+    text-align: center;
+}
+
 #city-forecast {
     border: solid 3px var(--neutral);
     border-radius: 10px;
-    height: 200px;
+    height: 300px;
+    padding: 20px;
     text-align: center;
 }
 
