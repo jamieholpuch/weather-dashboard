@@ -31,33 +31,7 @@ function getGeocode(userInput) {
 }
 
 
-function getWeatherApi(userInput) {
-    //var requestUrl = url + '&q=' + userInput + API key
-    //fetch the weather using the city the user searches for
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userInput}&units=imperial&appid=e67be6c9df6cf0b637426949787497f8`)
-        .then(function (response) {
-            if (response.status === 200) {
-                console.log(response);
-                return response.json();
-            } else {
-                console.log(response.statusText)
-            }
-        })
-        .then(function (data) {
-            console.log(data)
-            var cityEl = document.getElementById('city-name');
-            var tempEl = document.getElementById('city-temp')
-            var windEl = document.getElementById('city-wind')
-            var humidityEl = document.getElementById('city-humidity')
-            var cityDateEl = document.getElementById('city-date')
-            var todaysDate = dayjs().format('dddd, MMMM D, YYYY');
-            cityDateEl.textContent = todaysDate
-            cityEl.textContent = data.name;
-            tempEl.textContent = "Temperature: " + data.main.temp + " *F";
-            windEl.textContent = "Wind: " + data.wind.speed + " MPH";
-            humidityEl.textContent = "Humidity: " + data.main.humidity + " %";
-        })
-}
+
 
 function getForecast(lat, lon) {
     //fetch the five day forecast using geoCode lat and lon
@@ -103,12 +77,52 @@ function getForecast(lat, lon) {
         })
 }  
 
+function getWeatherApi(userInput) {
+    //var requestUrl = url + '&q=' + userInput + API key
+    //fetch the weather using the city the user searches for
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userInput}&units=imperial&appid=e67be6c9df6cf0b637426949787497f8`)
+        .then(function (response) {
+            if (response.status === 200) {
+                console.log(response);
+                return response.json();
+            } else {
+                console.log(response.statusText)
+            }
+        })
+        .then(function (data) {
+            console.log(data)
+            var cityEl = document.getElementById('city-name');
+            var tempEl = document.getElementById('city-temp')
+            var windEl = document.getElementById('city-wind')
+            var humidityEl = document.getElementById('city-humidity')
+            var cityDateEl = document.getElementById('city-date')
+            var todaysDate = dayjs().format('dddd, MMMM D, YYYY');
+            cityDateEl.textContent = todaysDate
+            cityEl.textContent = data.name;
+            tempEl.textContent = "Temperature: " + data.main.temp + " *F";
+            windEl.textContent = "Wind: " + data.wind.speed + " MPH";
+            humidityEl.textContent = "Humidity: " + data.main.humidity + " %";
+            //sets list of recent cities searched
+            var cityName = localStorage.getItem("city")
+            var recentSearchbtn = document.createElement('button');
+            recentSearchbtn.textContent = cityName;
+            document.getElementById("recent-search").appendChild(recentSearchbtn);
+            recentSearchbtn.setAttribute("class", "btn btn-outline-secondary my-1 search-again") 
+            recentSearchbtn.addEventListener("click", function() {
+                getGeocode(userInput)
+                getWeatherApi(userInput)
+                getForecast(lat, lon)
+        })
+    })
+    }
+
 function watchForm() {
     //when user clicks search, prevent default and run each function
     searchButtonEl.addEventListener("click", function(event) {
         event.preventDefault()
         var userInput = document.getElementById('user-input').value;
         console.log(userInput)
+        localStorage.setItem("city", userInput)
         getWeatherApi(userInput)
         getGeocode(userInput)
         getForecast(lat, lon)
@@ -117,7 +131,19 @@ function watchForm() {
 
 watchForm();
 
+//when user clicks on recent search button, it searches that city again
+//recall fetchURL? //click event? 
 
+//function recentSearchCity() {
+  //  var searchAgainEl = document.getElementByClassName('search-again')
+  //  if searchAgainEl.addEventListener("click", function(event) {
+  //      event.preventDefault()
+  //      getWeatherApi()
+  //      getGeocode()
+  //   getForecast()
+  //  }) else
+  //      return;
+//}
 
-
+//recentSearchCity()
 

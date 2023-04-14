@@ -27,11 +27,12 @@ h3 {
     color: var(--secondary);
     text-align: left;
     padding: 10px;
+    text-align: center;
 }
 
 h4 {
     font-size: 16px;
-    text-align: left;
+    text-align: center;
     padding-left: 10px;
 }
 
@@ -58,6 +59,7 @@ h4 {
     height: 300px;
     padding: 20px;
     text-align: center;
+    width: 400px;
 }
 
 #five-day-forecast {
